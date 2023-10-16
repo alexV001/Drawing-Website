@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="ALL.css">
+<script type="text/javascript" src="RUN.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+</script>
+</head>
+<body>
+<canvas oncontextmenu="return false;" willReadFrequently="true" class="MAIN" id="DrawArea" onmousedown="MD()" onmouseup="MU()" onmousemove="MM()" onmouseenter="ME()" onmouseleave="ML()"></canvas>
+<section>
+<nav id="menu">
+<button type="button" id="exit">X</button>
+<button id="next" class="menu-hide menu-hide1" >→</button>
+<button id="back" class="menu-hide menu-hide-2">←</button>
+<br class="menu-hide menu-hide1" />
+<br class="menu-hide menu-hide1" />
+<button class="menu-hide menu-hide1 color-preview" id="c1">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c2">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c3">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c4">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c5">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c6">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c7">0</button>
+<button class="menu-hide menu-hide1 color-preview" id="c8">0</button>
+<br class="menu-hide menu-hide1" />
+<center class="menu-hide menu-hide1">
+<h1 id="sizeL" class="menu-hide menu-hide1 label"><strong class="menu-hide menu-hide1 label">Size: 30</strong></h1>
+</center>
+<form class="menu-hide menu-hide1">
+<input type="range" min="1" max="300" value="30" class="menu-hide size menu-hide1" id="SIZE" oninput="SC()">
+</form>
+<br class="menu-hide menu-hide1" />
+<br class="menu-hide menu-hide1" />
+<canvas class="menu-hide" id="PREVIEW" width="251px" height="251px"></canvas>
+<br class="menu-hide-2 menu-hide menu-hide1" />
+<br class="menu-hide-2 menu-hide menu-hide1" />
+<form class="menu-hide menu-hide-2 hold">
+<h1 id="redL" class="menu-hide-2 menu-hide">Red Value: 255</h1>
+<input type="range" min="0" max="255" value="255" class="rgb" id="RED" oninput="RC()">
+<h1 id="greenL" class="menu-hide-2 menu-hide">Green Value: 0</h1>
+<input type="range" min="0" max="255" value="0" class="rgb" id="GREEN" oninput="GC()">
+<h1 id="blueL" class="menu-hide-2 menu-hide">Blue Value: 0</h1>
+<input type="range" min="0" max="255" value="0" class="rgb" id="BLUE" oninput="BC()">
+<h1 id="alphaL" class="menu-hide-2 menu-hide">Alpha Value: 1</h1>
+<input type="range" min="0" step=".1" max="1" value="1" class="rgb" id="ALPHA" oninput="AC()">
+</form>
+<button id="M1" style="font-size:175%;" class="menu-hide-2 menu-hide mode">Brush </button>
+<button id="M2" class="menu-hide-2 menu-hide mode">Line </button>
+<button id="M3" class="menu-hide-2 menu-hide mode">Square </button>
+<br class="menu-hide menu-hide-2" />
+<br class="menu-hide menu-hide-2" />
+<input type="checkbox" name="E" id="eraser" class="menu-hide-2 E menu-hide">
+<label for="E" class="menu-hide-2 menu-hide E" >Eraser Mode</label>
+<br class="menu-hide menu-hide-2" />
+<br class="menu-hide menu-hide-2" />
+<button id="M4" type="button" class="menu-hide menu-hide-2 mode">Dropper</button>
+<button id="M5" type="button" class="menu-hide menu-hide-2 mode">Flood Fill</button>
+<a style="display:none;" id="SAVE1" href=""></a>
+<button class="menu-hide menu-hide1 opt" onclick="UNDO()">Undo</button>
+<button type="button" style="position:fixed;right:4px;" onclick="SaveImg()" class="menu-hide menu-hide1 opt">Save</button>
+<center class="menu-hide menu-hide1">
+<button class="menu-hide menu-hide1 opt" onclick="REDO()" style="position:static;">Redo</button>
+</center>
+<hr class="menu-hide menu-hide-2" />
+<form class="menu-hide op brush">
+<input id="SMOX" class="MO" type="number" placeholder="Brush Starting X Offset" name="SMOX" value="-8"><label for="SMOX"> Starting X Offset</label>
+<br />
+<input id="SMOY" class="MO" type="number" placeholder="Brush Starting Y Offset" name="SMOY" value="-8"><label for="SMOY"> Starting Y Offset</label>
+<br />
+<input id="MOX" class="MO" type="number" placeholder="Brush Ending X Offset" name="MOX" value="-8"><label for="MOX"> Ending X Offset</label>
+<br />
+<input id="MOY" class="MO" type="number" placeholder="Brush Ending Y Offset" name="MOY" value="-8"><label for="MOY"> Ending Y Offset</label>
+</form>
+<form class="menu-hide op line">
+<input type="checkbox" id="SCE" name="cap"><label for="cap">Squared Line Cap</label>
+<br />
+<br />
+<input type="checkbox" id="SPI" name="SPI"><label for="SPI">Enable Line Sprial</label>
+</form>
+<form class="menu-hide op square">
+<input type="checkbox" id="filled" name="filled"><label for="filled">Filled Square</label>
+</form>
+<form class="menu-hide op fill">
+<label id="tolL" for="flood">Tolerence: 30</label>
+<br />
+<input name="flood" type="range" min="1" max="200" value="30" id="tol">
+</form>
+</nav>
+</section>
+<div id="CURSOR" class="cursor rounded"></div>
+</body>
+</html>
